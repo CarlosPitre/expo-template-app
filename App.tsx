@@ -1,18 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { themeApp } from '@/presentation/theme/theme';
+import styled, { ThemeProvider } from 'styled-components/native';
+
+const ViewWrapper = styled.View`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme: { colors } }) => colors.info.variant};
+  padding: ${({ theme: { spacing } }) => spacing.md};
+`;
+
+const TextWrapper = styled.Text`
+  color: ${({ theme: { colors }}) => colors.neutral.main};
+  font-size: ${({ theme: { typography } }) => typography.size.xlg};
+  font-weight: ${({ theme: { typography } }) => typography.weight['semi-bold']};
+`;
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <ThemeProvider theme={themeApp}>
+      <ViewWrapper>
+        <TextWrapper>Open up App.tsx to start working on your app!</TextWrapper>
+      </ViewWrapper>
+    </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
