@@ -13,6 +13,7 @@ export type Color = {
   'neutral-high': string;
   'neutral-medium': string;
   'neutral-low': string;
+  white: string;
 };
 
 export const colors: Color = {
@@ -26,8 +27,9 @@ export const colors: Color = {
   'warning-variant': '#F7CCBA',
   error: '#79110D',
   'error-variant': '#F8BCBA',
-  neutral: '#8B9CA7',
-  'neutral-high': '#363F45',
-  'neutral-medium': '#485760',
-  'neutral-low': '#6E8391',
+  neutral: '#BDBDBD',
+  'neutral-high': '#D8D8D8',
+  'neutral-medium': '#E6E6E6',
+  'neutral-low': '#F2F2F2',
+  white: '#FFFFFF',
 };
