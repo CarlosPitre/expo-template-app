@@ -1,4 +1,4 @@
-import Typography from '@/presentation/components/typography';
+import Typography from '@/presentation/components/ui/typography';
 import { themeApp } from '@/presentation/theme/theme';
 import styled, { ThemeProvider } from 'styled-components/native';
 
