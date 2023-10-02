@@ -9,16 +9,6 @@ type Variant = {
   [item in TypographyVariants]: RuleSet<TypographyProps>;
 };
 
-const lineHeight = {
-  heading: 10,
-  body: 140,
-};
-
-const letterSpacing = {
-  heading: 0,
-  body: 0,
-};
-
 const Heading = css<TypographyProps>`
   color: ${({ theme: { colors }, color }) => colors[color]};
   font-size: ${({ theme: { typography } }) => typography.size.xxlg};

@@ -1,8 +1,11 @@
-import { Color, colors } from '@/presentation/theme/tokens/color';
+import { Color } from '@/presentation/theme/tokens/color';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import React from 'react';
-import { ActivityIndicator, PressableProps, Text } from 'react-native';
+import { ActivityIndicator, PressableProps } from 'react-native';
+import TextButton from './components/text-button';
 import { ButtonWrapper } from './styles';
+import getIconColor from './styles/get-icon-color';
+import getIconSize from './styles/get-icon-size';
 import {
   ButtonIconPosition,
   ButtonSizes,
@@ -10,7 +13,6 @@ import {
   ButtonWrapperProps,
   TextButtonProps,
 } from './types';
-import TextButton from './components/text-button';
 
 export interface ButtonProps extends PressableProps {
   variant?: ButtonVariants;
@@ -43,44 +45,27 @@ const Button = ({
     disabled,
     ...rest,
   };
+
   const propsText: TextButtonProps = { color, size, variant, disabled };
-
-  const getColorIcon = () => {
-    switch (variant) {
-      case 'outline':
-        return disabled ? colors.neutral : colors[color];
-
-      case 'ghost':
-        return disabled ? colors.neutral : colors[color];
-
-      default:
-        return disabled ? colors.neutral : 'white';
-    }
-  };
-
-  const getSizeIcon = () => {
-    switch (size) {
-      case 'lg':
-        return 22;
-
-      case 'sm':
-        return 14;
-
-      default:
-        return 18;
-    }
-  };
 
   const ButtonContent = () => (
     <>
       {icon && positionIcon === 'left' && (
-        <FontAwesome name={icon} size={getSizeIcon()} color={getColorIcon()} />
+        <FontAwesome
+          name={icon}
+          size={getIconSize(size)}
+          color={getIconColor({ variant, disabled, color })}
+        />
       )}
 
       <TextButton {...propsText}>{text}</TextButton>
 
       {icon && positionIcon === 'right' && (
-        <FontAwesome name={icon} size={getSizeIcon()} color={getColorIcon()} />
+        <FontAwesome
+          name={icon}
+          size={getIconSize(size)}
+          color={getIconColor({ variant, disabled, color })}
+        />
       )}
     </>
   );
@@ -88,7 +73,10 @@ const Button = ({
   return (
     <ButtonWrapper {...props}>
       {isLoading ? (
-        <ActivityIndicator color={getColorIcon()} size={getSizeIcon()} />
+        <ActivityIndicator
+          color={getIconColor({ variant, disabled, color })}
+          size={getIconSize(size)}
+        />
       ) : (
         <ButtonContent />
       )}
