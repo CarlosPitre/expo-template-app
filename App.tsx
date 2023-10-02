@@ -1,5 +1,5 @@
-import Button from '@/presentation/components/ui/buttons';
-import Typography from '@/presentation/components/ui/typography';
+import Button from '@/presentation/components/ui/atoms/buttons';
+import Typography from '@/presentation/components/ui/atoms/typography';
 import { themeApp } from '@/presentation/theme/theme';
 import { View } from 'react-native';
 import styled, { ThemeProvider } from 'styled-components/native';
